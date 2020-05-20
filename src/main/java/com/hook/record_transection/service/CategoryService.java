@@ -22,11 +22,11 @@ public class CategoryService {
     }
 
     public List<Category> findAll(){
-        return this.categoryRepository.findAll();
+        return categoryRepository.findAll();
     }
 
     public Optional<Category> findById(int id){
-        return this.categoryRepository.findById(id);
+        return categoryRepository.findById(id);
     }
 
     public Category updateCategory(Category category, int id){
@@ -38,8 +38,17 @@ public class CategoryService {
         return this.categoryRepository.save(_category);
 
     }
-    public void deleteCategory(Integer id){
-         this.categoryRepository.deleteById(id);
+    public Category deleteCategory(Integer id){
+        Category category= this.categoryRepository.getOne(id);
+        if(category==null){
+            return null;
+        }
+        else {
+            category.setStatus(0);
+            return this.categoryRepository.save(category);
+        }
+
+
     }
 
 }

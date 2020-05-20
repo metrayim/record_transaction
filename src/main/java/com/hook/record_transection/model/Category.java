@@ -51,6 +51,9 @@ public class Category {
     public int getStatus() {
         return this.status;
     }
+    public void setStatus(Integer status){
+        this.status=status;
+    }
 
     public float getPrice() {
         return this.price;
